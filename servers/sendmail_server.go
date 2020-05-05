@@ -10,5 +10,5 @@ type SendmailServer struct{}
 
 func (server *SendmailServer) SendUserRegistration(ctx context.Context, req *pb.EmailRequest) (*pb.EmailResponse, error) {
 	// systemCode := req.GetSystemCode
-	return &pb.EmailResponse{Name: "test1", Email: "test1@gmail.com"}, nil
+	return &pb.EmailResponse{Status: "ok"}, nil
 }
