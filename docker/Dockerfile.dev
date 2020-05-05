@@ -1,0 +1,10 @@
+# build用兼開発用
+FROM golang:1.13-alpine
+
+WORKDIR /go/app
+
+COPY . .
+
+RUN apk add --no-cache git bash && \
+ go build -o app && \
+ go get github.com/oxequa/realize

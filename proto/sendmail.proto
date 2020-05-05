@@ -1,0 +1,17 @@
+syntax = "proto3";
+package sendmail;
+option go_package = ".;sendmail";
+import "github.com/mwitkow/go-proto-validators/validator.proto";
+
+service Sendmail {
+  rpc SendUserRegistration (EmailRequest) returns (EmailResponse) {}
+}
+
+message EmailRequest {
+  string fromAddress = 1;
+  string toAddress = 2;
+}
+
+message EmailResponse {
+  string status = 1;
+}
