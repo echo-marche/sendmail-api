@@ -11,3 +11,7 @@ func GetEnv(key string) string {
 	}
 	panic(fmt.Errorf("Error: unable get os env [%s]", key))
 }
+
+func IsDev() bool {
+	return GetEnv("GO_ENV") == "development"
+}

@@ -4,12 +4,14 @@ option go_package = ".;sendmail";
 import "github.com/mwitkow/go-proto-validators/validator.proto";
 
 service Sendmail {
-  rpc SendUserRegistration (EmailRequest) returns (EmailResponse) {}
+  rpc SendSample (EmailRequest) returns (EmailResponse) {}
 }
 
 message EmailRequest {
   string fromAddress = 1;
   string toAddress = 2;
+  string subject = 3;
+  string msg =4;
 }
 
 message EmailResponse {
