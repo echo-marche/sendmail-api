@@ -8,10 +8,11 @@ service Sendmail {
 }
 
 message EmailRequest {
-  string fromAddress = 1;
-  string toAddress = 2;
-  string subject = 3;
-  string msg =4;
+  string fromUserName = 1;
+  string fromAddress = 2;
+  string toAddress = 3;
+  string subject = 4;
+  string msg =5;
 }
 
 message EmailResponse {
