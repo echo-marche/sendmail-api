@@ -9,6 +9,7 @@ import (
 	pb "github.com/echo-marche/sendmail-api/proto/pb"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	"google.golang.org/protobuf/types/known/emptypb"
 )
 
 type SendmailServer struct{}
@@ -21,6 +22,10 @@ func (a unencryptedAuth) Start(server *smtp.ServerInfo) (string, []byte, error) 
 	s := *server
 	s.TLS = true
 	return a.Auth.Start(&s)
+}
+
+func (server *SendmailServer) Healthz(ctx context.Context, _ *emptypb.Empty) (*pb.HealthzResponse, error) {
+	return &pb.HealthzResponse{ReturnMessage: "Sendmail Server healthz ok"}, nil
 }
 
 func (server *SendmailServer) SendSample(ctx context.Context, req *pb.EmailRequest) (*pb.EmailResponse, error) {

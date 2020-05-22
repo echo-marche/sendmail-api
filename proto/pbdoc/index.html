@@ -186,6 +186,10 @@
                   <a href="#sendmail.EmailResponse"><span class="badge">M</span>EmailResponse</a>
                 </li>
               
+                <li>
+                  <a href="#sendmail.HealthzResponse"><span class="badge">M</span>HealthzResponse</a>
+                </li>
+              
               
               
               
@@ -284,6 +288,30 @@
 
         
       
+        <h3 id="sendmail.HealthzResponse">HealthzResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>return_message</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
 
       
 
@@ -297,6 +325,13 @@
             <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
           </thead>
           <tbody>
+            
+              <tr>
+                <td>Healthz</td>
+                <td><a href="#google.protobuf.Empty">.google.protobuf.Empty</a></td>
+                <td><a href="#sendmail.HealthzResponse">HealthzResponse</a></td>
+                <td><p></p></td>
+              </tr>
             
               <tr>
                 <td>SendSample</td>

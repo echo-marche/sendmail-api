@@ -10,11 +10,12 @@ import (
 	grpc_middleware "github.com/grpc-ecosystem/go-grpc-middleware"
 	grpc_validator "github.com/grpc-ecosystem/go-grpc-middleware/validator"
 	"google.golang.org/grpc"
+	health "google.golang.org/grpc/health/grpc_health_v1"
 )
 
 func main() {
 	// init gRPC server
-	listenPort, err := net.Listen("tcp", ":"+config.GetEnv("API_PORT"))
+	listenPort, err := net.Listen("tcp", ":"+config.GetEnv("SENDMAIL_API_SERVICE_PORT"))
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -27,7 +28,9 @@ func main() {
 		)),
 	)
 	sendmailServer := &servers.SendmailServer{}
+	healthServer := &servers.HealthServer{}
 	pb.RegisterSendmailServer(server, sendmailServer)
+	health.RegisterHealthServer(server, healthServer)
 	if err := server.Serve(listenPort); err != nil {
 		log.Fatalf("failed to serve: %v", err)
 	}
